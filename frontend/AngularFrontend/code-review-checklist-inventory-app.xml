@@ -1,0 +1,244 @@
+<?xml version="1.0"?>
+<?mso-application progid="Excel.Sheet"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+          xmlns:o="urn:schemas-microsoft-com:office:office"
+          xmlns:x="urn:schemas-microsoft-com:office:excel"
+          xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet">
+  <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
+    <Author>Automated Checklist Generator</Author>
+    <Created>2025-10-06T00:00:00Z</Created>
+    <Version>1.0</Version>
+  </DocumentProperties>
+  <Worksheet ss:Name="Checklist">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">ID</Data></Cell>
+        <Cell><Data ss:Type="String">Category</Data></Cell>
+        <Cell><Data ss:Type="String">Item</Data></Cell>
+        <Cell><Data ss:Type="String">Description</Data></Cell>
+        <Cell><Data ss:Type="String">Priority</Data></Cell>
+        <Cell><Data ss:Type="String">PR Checklist (Y/N)</Data></Cell>
+        <Cell><Data ss:Type="String">Test Steps</Data></Cell>
+        <Cell><Data ss:Type="String">Status</Data></Cell>
+        <Cell><Data ss:Type="String">Notes</Data></Cell>
+      </Row>
+
+      <Row>
+        <Cell><Data ss:Type="Number">1</Data></Cell>
+        <Cell><Data ss:Type="String">Architecture & Boot</Data></Cell>
+        <Cell><Data ss:Type="String">bootstrapApplication usage</Data></Cell>
+        <Cell><Data ss:Type="String">Verify app starts with bootstrapApplication and appConfig providers are correct.</Data></Cell>
+        <Cell><Data ss:Type="String">Medium</Data></Cell>
+        <Cell><Data ss:Type="String">Y</Data></Cell>
+        <Cell><Data ss:Type="String">Start app, ensure no duplicate router/provider errors in console.</Data></Cell>
+        <Cell><Data ss:Type="String"></Data></Cell>
+        <Cell><Data ss:Type="String"></Data></Cell>
+      </Row>
+
+      <Row>
+        <Cell><Data ss:Type="Number">2</Data></Cell>
+        <Cell><Data ss:Type="String">Components</Data></Cell>
+        <Cell><Data ss:Type="String">Standalone imports</Data></Cell>
+        <Cell><Data ss:Type="String">Confirm standalone components declare required imports (Forms, CommonModule, Router etc.).</Data></Cell>
+        <Cell><Data ss:Type="String">Low</Data></Cell>
+        <Cell><Data ss:Type="String">Y</Data></Cell>
+        <Cell><Data ss:Type="String">Open each standalone component and check `imports` array.</Data></Cell>
+        <Cell><Data ss:Type="String"></Data></Cell>
+        <Cell><Data ss:Type="String"></Data></Cell>
+      </Row>
+
+      <Row>
+        <Cell><Data ss:Type="Number">3</Data></Cell>
+        <Cell><Data ss:Type="String">Routing</Data></Cell>
+        <Cell><Data ss:Type="String">Protected routes use canActivate</Data></Cell>
+        <Cell><Data ss:Type="String">Verify routes that require auth include `canActivate: [authGuard]` and intended role checks.</Data></Cell>
+        <Cell><Data ss:Type="String">High</Data></Cell>
+        <Cell><Data ss:Type="String">Y</Data></Cell>
+        <Cell><Data ss:Type="String">Attempt to access protected route while logged out and expect redirect to /login.</Data></Cell>
+        <Cell><Data ss:Type="String"></Data></Cell>
+        <Cell><Data ss:Type="String">Add `data.role` where role-based access is needed.</Data></Cell>
+      </Row>
+
+      <Row>
+        <Cell><Data ss:Type="Number">4</Data></Cell>
+        <Cell><Data ss:Type="String">Guards</Data></Cell>
+        <Cell><Data ss:Type="String">returnUrl handling</Data></Cell>
+        <Cell><Data ss:Type="String">Ensure guard sets returnUrl and login flow redirects back to it after successful login.</Data></Cell>
+        <Cell><Data ss:Type="String">High</Data></Cell>
+        <Cell><Data ss:Type="String">Y</Data></Cell>
+        <Cell><Data ss:Type="String">Access /dashboard while logged out; after login expect redirect to original URL.</Data></Cell>
+        <Cell><Data ss:Type="String"></Data></Cell>
+        <Cell><Data ss:Type="String">Update LoginComponent to honor query param if missing.</Data></Cell>
+      </Row>
+
+      <Row>
+        <Cell><Data ss:Type="Number">5</Data></Cell>
+        <Cell><Data ss:Type="String">Auth & Security</Data></Cell>
+        <Cell><Data ss:Type="String">Client-only auth risk</Data></Cell>
+        <Cell><Data ss:Type="String">Confirm team understands this is demo-level client-side auth; note production requirements (tokens, backend).</Data></Cell>
+        <Cell><Data ss:Type="String">Critical</Data></Cell>
+        <Cell><Data ss:Type="String">Y</Data></Cell>
+        <Cell><Data ss:Type="String">Review README and security docs; list TODOs for migrating to backend auth.</Data></Cell>
+        <Cell><Data ss:Type="String"></Data></Cell>
+        <Cell><Data ss:Type="String">Blocker for production usage.</Data></Cell>
+      </Row>
+
+      <Row>
+        <Cell><Data ss:Type="Number">6</Data></Cell>
+        <Cell><Data ss:Type="String">Persistence</Data></Cell>
+        <Cell><Data ss:Type="String">localStorage safety</Data></Cell>
+        <Cell><Data ss:Type="String">Wrap localStorage reads/writes in try/catch and provide fallback in-memory store.</Data></Cell>
+        <Cell><Data ss:Type="String">Critical</Data></Cell>
+        <Cell><Data ss:Type="String">Y</Data></Cell>
+        <Cell><Data ss:Type="String">Run app in privacy mode or restricted env; ensure no uncaught exceptions from storage calls.</Data></Cell>
+        <Cell><Data ss:Type="String"></Data></Cell>
+        <Cell><Data ss:Type="String">Implement a storage util for safe access.</Data></Cell>
+      </Row>
+
+      <Row>
+        <Cell><Data ss:Type="Number">7</Data></Cell>
+        <Cell><Data ss:Type="String">Persistence</Data></Cell>
+        <Cell><Data ss:Type="String">productSales durability</Data></Cell>
+        <Cell><Data ss:Type="String">productSales is in-memory only; if sales must be durable, persist it to localStorage or backend.</Data></Cell>
+        <Cell><Data ss:Type="String">High</Data></Cell>
+        <Cell><Data ss:Type="String">Y</Data></Cell>
+        <Cell><Data ss:Type="String">Buy a product, reload page, confirm sales counts persist if required.</Data></Cell>
+        <Cell><Data ss:Type="String"></Data></Cell>
+        <Cell><Data ss:Type="String">Recommend serializing map to object in saveToStorage().</Data></Cell>
+      </Row>
+
+      <Row>
+        <Cell><Data ss:Type="Number">8</Data></Cell>
+        <Cell><Data ss:Type="String">State Mgmt</Data></Cell>
+        <Cell><Data ss:Type="String">BehaviorSubject exposure</Data></Cell>
+        <Cell><Data ss:Type="String">Verify components subscribe to Observables only (use `.asObservable()`), not to `.value` directly unless intentional.</Data></Cell>
+        <Cell><Data ss:Type="String">Medium</Data></Cell>
+        <Cell><Data ss:Type="String">Y</Data></Cell>
+        <Cell><Data ss:Type="String">Scan codebase for `.value` usages in components.</Data></Cell>
+        <Cell><Data ss:Type="String"></Data></Cell>
+        <Cell><Data ss:Type="String">Prefer immutable updates via new arrays/objects.</Data></Cell>
+      </Row>
+
+      <Row>
+        <Cell><Data ss:Type="Number">9</Data></Cell>
+        <Cell><Data ss:Type="String">IDs & Concurrency</Data></Cell>
+        <Cell><Data ss:Type="String">nextId generation</Data></Cell>
+        <Cell><Data ss:Type="String">Check for potential ID collisions in multi-tab or multiple clients; consider UUIDs or persisted counters.</Data></Cell>
+        <Cell><Data ss:Type="String">Medium</Data></Cell>
+        <Cell><Data ss:Type="String">Y</Data></Cell>
+        <Cell><Data ss:Type="String">Open two tabs and add products/users to see ID behavior.</Data></Cell>
+        <Cell><Data ss:Type="String"></Data></Cell>
+        <Cell><Data ss:Type="String">Note: OK for local demo only.</Data></Cell>
+      </Row>
+
+      <Row>
+        <Cell><Data ss:Type="Number">10</Data></Cell>
+        <Cell><Data ss:Type="String">Business Logic</Data></Cell>
+        <Cell><Data ss:Type="String">purchaseProduct validation</Data></Cell>
+        <Cell><Data ss:Type="String">Ensure purchaseProduct enforces login, role==buyer and sufficient stock. Check clear error messages returned.</Data></Cell>
+        <Cell><Data ss:Type="String">High</Data></Cell>
+        <Cell><Data ss:Type="String">Y</Data></Cell>
+        <Cell><Data ss:Type="String">Attempt purchase as logged-out, as seller, and with insufficient quantity; assert returned errors.</Data></Cell>
+        <Cell><Data ss:Type="String"></Data></Cell>
+        <Cell><Data ss:Type="String">Unit tests recommended.</Data></Cell>
+      </Row>
+
+      <Row>
+        <Cell><Data ss:Type="Number">11</Data></Cell>
+        <Cell><Data ss:Type="String">Data</Data></Cell>
+        <Cell><Data ss:Type="String">products init heuristic</Data></Cell>
+        <Cell><Data ss:Type="String">Review `needsUpdate` logic that may overwrite user-modified products; ensure intended behavior and document it.</Data></Cell>
+        <Cell><Data ss:Type="String">High</Data></Cell>
+        <Cell><Data ss:Type="String">Y</Data></Cell>
+        <Cell><Data ss:Type="String">Modify local products to fewer than 8; reload and confirm whether overwritten.</Data></Cell>
+        <Cell><Data ss:Type="String"></Data></Cell>
+        <Cell><Data ss:Type="String">Consider a migration strategy instead of silent overwrite.</Data></Cell>
+      </Row>
+
+      <Row>
+        <Cell><Data ss:Type="Number">12</Data></Cell>
+        <Cell><Data ss:Type="String">UI & UX</Data></Cell>
+        <Cell><Data ss:Type="String">Login returnUrl behavior</Data></Cell>
+        <Cell><Data ss:Type="String">Login should redirect to `returnUrl` (if present) rather than default `/dashboard`.</Data></Cell>
+        <Cell><Data ss:Type="String">Medium</Data></Cell>
+        <Cell><Data ss:Type="String">Y</Data></Cell>
+        <Cell><Data ss:Type="String">Simulate guard redirect with `?returnUrl=/payment/1/1` and complete login; expect redirect there.</Data></Cell>
+        <Cell><Data ss:Type="String"></Data></Cell>
+        <Cell><Data ss:Type="String">Update LoginComponent to read router query params.</Data></Cell>
+      </Row>
+
+      <Row>
+        <Cell><Data ss:Type="Number">13</Data></Cell>
+        <Cell><Data ss:Type="String">Accessibility</Data></Cell>
+        <Cell><Data ss:Type="String">Forms labels & ARIA</Data></Cell>
+        <Cell><Data ss:Type="String">Ensure form fields have labels and ARIA roles, popup dialogs manage focus.</Data></Cell>
+        <Cell><Data ss:Type="String">Medium</Data></Cell>
+        <Cell><Data ss:Type="String">Y</Data></Cell>
+        <Cell><Data ss:Type="String">Run lighthouse/accessibility checks on login and key pages.</Data></Cell>
+        <Cell><Data ss:Type="String"></Data></Cell>
+        <Cell><Data ss:Type="String">Add aria-live for error messages.</Data></Cell>
+      </Row>
+
+      <Row>
+        <Cell><Data ss:Type="Number">14</Data></Cell>
+        <Cell><Data ss:Type="String">Testing</Data></Cell>
+        <Cell><Data ss:Type="String">Unit tests for UserService</Data></Cell>
+        <Cell><Data ss:Type="String">Add unit tests covering login/logout, addUser (duplicate), addProduct, purchaseProduct success/failure.</Data></Cell>
+        <Cell><Data ss:Type="String">High</Data></Cell>
+        <Cell><Data ss:Type="String">Y</Data></Cell>
+        <Cell><Data ss:Type="String">Run `ng test` and confirm new tests pass.</Data></Cell>
+        <Cell><Data ss:Type="String"></Data></Cell>
+        <Cell><Data ss:Type="String">Include edge cases and storage mocking.</Data></Cell>
+      </Row>
+
+      <Row>
+        <Cell><Data ss:Type="Number">15</Data></Cell>
+        <Cell><Data ss:Type="String">CI & Lint</Data></Cell>
+        <Cell><Data ss:Type="String">Enforce lint and tests in CI</Data></Cell>
+        <Cell><Data ss:Type="String">Ensure pipeline runs lint, typecheck and unit tests; PRs fail if checks fail.</Data></Cell>
+        <Cell><Data ss:Type="String">High</Data></Cell>
+        <Cell><Data ss:Type="String">Y</Data></Cell>
+        <Cell><Data ss:Type="String">Open PR with intentional lint error to verify CI rejects it (test env permitting).</Data></Cell>
+        <Cell><Data ss:Type="String"></Data></Cell>
+        <Cell><Data ss:Type="String">Update pipeline config if missing.</Data></Cell>
+      </Row>
+
+      <Row>
+        <Cell><Data ss:Type="Number">16</Data></Cell>
+        <Cell><Data ss:Type="String">Logging</Data></Cell>
+        <Cell><Data ss:Type="String">PII in logs/localStorage</Data></Cell>
+        <Cell><Data ss:Type="String">Avoid logging sensitive user data to console or storing unnecessary PII in localStorage.</Data></Cell>
+        <Cell><Data ss:Type="String">High</Data></Cell>
+        <Cell><Data ss:Type="String">Y</Data></Cell>
+        <Cell><Data ss:Type="String">Scan code for console.log calls that include user objects and sanitize them.</Data></Cell>
+        <Cell><Data ss:Type="String"></Data></Cell>
+        <Cell><Data ss:Type="String">Replace verbose logs with debug-level guarded logs.</Data></Cell>
+      </Row>
+
+      <Row>
+        <Cell><Data ss:Type="Number">17</Data></Cell>
+        <Cell><Data ss:Type="String">Multi-tab</Data></Cell>
+        <Cell><Data ss:Type="String">Logout sync across tabs</Data></Cell>
+        <Cell><Data ss:Type="String">Consider using storage events to sync logout/login across browser tabs if needed.</Data></Cell>
+        <Cell><Data ss:Type="String">Low</Data></Cell>
+        <Cell><Data ss:Type="String">N</Data></Cell>
+        <Cell><Data ss:Type="String">Login in one tab and logout in another; observe state handling.</Data></Cell>
+        <Cell><Data ss:Type="String"></Data></Cell>
+        <Cell><Data ss:Type="String">Optional enhancement.</Data></Cell>
+      </Row>
+
+      <Row>
+        <Cell><Data ss:Type="Number">18</Data></Cell>
+        <Cell><Data ss:Type="String">Docs</Data></Cell>
+        <Cell><Data ss:Type="String">README persistence keys</Data></Cell>
+        <Cell><Data ss:Type="String">Document which localStorage keys are used (`currentUser`, `users`, `products`, `seller_{id}_products`) and how to reset."> </Data></Cell>
+        <Cell><Data ss:Type="String">Low</Data></Cell>
+        <Cell><Data ss:Type="String">Y</Data></Cell>
+        <Cell><Data ss:Type="String">Open README and confirm doc presence.</Data></Cell>
+        <Cell><Data ss:Type="String"></Data></Cell>
+        <Cell><Data ss:Type="String">Add migration steps if structure changes.</Data></Cell>
+      </Row>
+
+    </Table>
+  </Worksheet>
+</Workbook>
